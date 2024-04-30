@@ -1,7 +1,7 @@
 // BoardWrite.jsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { addBoardList } from '../apis/axios';
+import { addBoardList } from '../apis/axios.js';
 import { Images } from '../components';
 
 const BoardWrite = () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { deleteBoard } from '../apis/axios';
+import { deleteBoard } from '../apis/axios.js';
 const Board = ({ idx, title, contents, createdBy , imageUrls}) => {
   const navigate = useNavigate();
 
