@@ -1,4 +1,4 @@
-import axiosInstance from 'src/apis/axios.js';
+import axiosInstance from '../apis/axiosInstance.js';
 
 export const getBoardList = async () => {
     try{
