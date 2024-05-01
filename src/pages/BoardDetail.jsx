@@ -10,7 +10,7 @@ const BoardDetail = () => {
     const fetchBoard = async() => {
         try{
             const resp = await getBoard(id);
-            setBoard(resp);
+            setBoard(resp.data);
             setLoading(false);
         }catch(error){
             console.error(error);
@@ -27,7 +27,7 @@ const BoardDetail = () => {
         {loading ? (<h2>loading...</h2>) 
         : (
         <Board
-          idx={board.idx}
+          id={board.id}
           title={board.title}
           contents={board.contents}
           createdBy={board.createdBy}

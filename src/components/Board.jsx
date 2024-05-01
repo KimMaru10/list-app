@@ -1,16 +1,16 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { deleteBoard } from '../apis/axios.js';
-const Board = ({ idx, title, contents, createdBy , imageUrls}) => {
+const Board = ({ id, title, contents, createdBy , imageUrls}) => {
   const navigate = useNavigate();
 
   const moveToUpdate = () => {
-    navigate('/update/' + idx);
+    navigate('/update/' + id);
   };
 
   const handelDeleteBoard = async () => {
     if(window.confirm("게시글을 삭제 하시겠습니까?")){
-      const success = await deleteBoard(idx); // 삭제 요청 보내기
+      const success = await deleteBoard(id); // 삭제 요청 보내기
           if (success) {
               alert('삭제되었습니다.');
               navigate('/board'); // 삭제 성공 시 페이지 이동
