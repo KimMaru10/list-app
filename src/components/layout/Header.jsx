@@ -9,7 +9,7 @@ const Header = ()=> {
     <header>
         <div style={styles}>
             <Link to="/">Home</Link>
-            <Link to="/board">게시판</Link>
+            <Link to="/boardList">게시판</Link>
         </div>
         <hr/>
     </header>

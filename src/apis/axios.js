@@ -2,8 +2,8 @@ import axiosInstance from './axiosInstance.js';
 
 export const getBoardList = async () => {
     try{
-        const response = await axiosInstance.get('/board');
-        return response.data;
+        const response = await axiosInstance.get('/api/board');
+        return response;
     }catch(error){
         console.error('리스트 불러오기 실패 : ',error);
     }
@@ -11,8 +11,8 @@ export const getBoardList = async () => {
 
 export const addBoardList = async (boardData) => {
     try{
-        const response = await axiosInstance.post('/board', boardData);
-        return response.data;
+        const response = await axiosInstance.post('/api/board', boardData);
+        return response;
     }catch(error){
         console.error('게시글 저장 실패 : ',error);
     }
@@ -20,8 +20,8 @@ export const addBoardList = async (boardData) => {
 
 export const getBoard = async (id) => {
     try{
-        const response = await axiosInstance.get(`/board/${id}`);
-        return response.data;
+        const response = await axiosInstance.get(`/api/board/${id}`);
+        return response;
     }catch(error){
         console.error('게시글 상세 불러오기 실패 : ',error);
     }
@@ -29,7 +29,7 @@ export const getBoard = async (id) => {
 
 export const deleteBoard =async (id) => {
     try{
-        await axiosInstance.delete(`/board/${id}`);
+        await axiosInstance.delete(`/api/board/${id}`);
         return true;
         
     }catch(error){
@@ -40,8 +40,8 @@ export const deleteBoard =async (id) => {
 
 export const updateBoard = async(id, board) =>{
     try{
-        const response = await axiosInstance.patch(`/board/${id}`, board);
-        return response.data;
+        const response = await axiosInstance.patch(`/api/board/${id}`, board);
+        return response;
     }catch(error){
         console.error('게시글 수정 실패 : ',error);
     }

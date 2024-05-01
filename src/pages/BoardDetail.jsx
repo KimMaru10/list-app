@@ -9,8 +9,8 @@ const BoardDetail = () => {
 
     const fetchBoard = async() => {
         try{
-            const data = await getBoard(id);
-            setBoard(data.data);
+            const resp = await getBoard(id);
+            setBoard(resp);
             setLoading(false);
         }catch(error){
             console.error(error);
