@@ -22,15 +22,13 @@ const BoardList = () => {
   };
 
   return (
-    <div>
+    <div> 
         <ul>
-          {boardList?.map((board) => (
-              // 4) map 함수로 데이터 출력
+          {boardList && boardList.map((board) => ( // 4) map 함수로 데이터 출력
             <li key={board.id}>
               <Link to={`/board/${board.id}`}>{board.title}</Link>
             </li>
-          ))
-          }
+          ))}
         </ul>
       <div>
         <button onClick={moveToWrite}>글쓰기</button>
