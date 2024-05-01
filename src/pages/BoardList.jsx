@@ -8,7 +8,7 @@ const BoardList = () => {
   const fetchBoardList = async () => {
     try {
       const resp = await getBoardList(); // axios 모듈에서 데이터 가져오기
-      setBoardList(resp);
+      setBoardList(resp.data);
       setShowList(true);
     } catch (error) {
       console.error("리스트 불러오기 실패",error);
