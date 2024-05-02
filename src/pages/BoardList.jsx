@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { getBoardList } from '../apis/axios.js';
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { getBoardList } from "../apis/axios.js";
 const BoardList = () => {
   const navigate = useNavigate();
   const [boardList, setBoardList] = useState([]);
@@ -11,30 +11,31 @@ const BoardList = () => {
       setBoardList(resp.data);
       setShowList(true);
     } catch (error) {
-      console.error("리스트 불러오기 실패",error);
+      console.error("리스트 불러오기 실패", error);
     }
   };
   useEffect(() => {
     fetchBoardList(); // 1) 게시글 목록 조회 함수 호출
   }, []);
-  
+
   const moveToWrite = () => {
-    navigate('/write');
+    navigate("/write");
   };
 
   return (
-    <div> 
+    <div>
       {showlist ? (
-          <ul>
-            {boardList && boardList.map((board) => (
+        <ul>
+          {boardList &&
+            boardList.map((board) => (
               <li key={board.id}>
                 <Link to={`/board/${board.id}`}>{board.title}</Link>
               </li>
             ))}
-          </ul>
-        ) : (
-          <h2>loading...</h2>
-        )}
+        </ul>
+      ) : (
+        <h2>loading...</h2>
+      )}
       <div>
         <button onClick={moveToWrite}>글쓰기</button>
       </div>

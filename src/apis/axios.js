@@ -17,9 +17,9 @@ export const getBoard = async (id) => {
     }
 }
 
-export const addBoardList = async (boardData) => {
+export const addBoardList = async (formData) => {
     try{
-        const response = await axiosInstance.post('/api/board', boardData);
+        const response = await axiosInstance.post('/api/board', formData);
         return response;
     }catch(error){
         console.error('게시글 저장 실패 : ',error);

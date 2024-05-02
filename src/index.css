@@ -18,7 +18,7 @@ body {
 }
 
 /* 브라우저 밝기 모드에 따라 밝기 모드 전환 */
-@media (prefers-color-scheme: light) { 
+@media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;
