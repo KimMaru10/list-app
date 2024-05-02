@@ -8,6 +8,14 @@ export const getBoardList = async () => {
         console.error('리스트 불러오기 실패 : ',error);
     }
 };
+export const getBoard = async (id) => {
+    try{
+        const response = await axiosInstance.get(`/api/board/${id}`);
+        return response;
+    }catch(error){
+        console.error('게시글 상세 불러오기 실패 : ',error);
+    }
+}
 
 export const addBoardList = async (boardData) => {
     try{
@@ -18,14 +26,6 @@ export const addBoardList = async (boardData) => {
     }
 }
 
-export const getBoard = async (id) => {
-    try{
-        const response = await axiosInstance.get(`/api/board/${id}`);
-        return response;
-    }catch(error){
-        console.error('게시글 상세 불러오기 실패 : ',error);
-    }
-}
 
 export const deleteBoard =async (id) => {
     try{
@@ -40,7 +40,7 @@ export const deleteBoard =async (id) => {
 
 export const updateBoard = async(id, board) =>{
     try{
-        const response = await axiosInstance.patch(`/api/board/${id}`, board);
+        const response = await axiosInstance.put(`/api/board/${id}`, board);
         return response;
     }catch(error){
         console.error('게시글 수정 실패 : ',error);

@@ -33,7 +33,7 @@ const BoardList = () => {
             ))}
           </ul>
         ) : (
-          <p>게시물이 렌더링 되지 않았습니다.</p>
+          <h2>loading...</h2>
         )}
       <div>
         <button onClick={moveToWrite}>글쓰기</button>
