@@ -40,9 +40,11 @@ const BoardWrite = () => {
       board.imageUrls.forEach(imageUrl => {
         formData.append('imageUrls', imageUrl); // 이미지 파일을 FormData에 추가
       });
-      await addBoardList(formData); // FormData 객체를 전달하여 게시글 등록
-      alert('등록되었습니다.');
-      navigate('/board');
+      const resp = await addBoardList(formData); // FormData 객체를 전달하여 게시글 등록
+      if(resp){
+        alert('등록되었습니다.');
+        navigate('/board');
+      }
     } catch (error) {
       console.error(error);
       // 에러 처리
