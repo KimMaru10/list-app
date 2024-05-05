@@ -34,6 +34,14 @@ const BoardWrite = () => {
   const addBoardHandler = async () => {
     try {
       const formData = new FormData(); //formData 객체생성
+      // formData.append(
+      //   "data",
+      //   JSON.stringify({
+      //     title: board.title,
+      //     createdBy: board.createdBy,
+      //     content: board.content,
+      //   })
+      // );
       formData.append("title", board.title);
       formData.append("createdBy", board.createdBy);
       formData.append("content", board.content);
