@@ -12,7 +12,7 @@ const BoardUpdate = () => {
     images: [],
   });
   const [newImages, setNewImages] = useState([]);
-  const [deletedImageUrls, setDeletedImageUrls] = useState("");
+  const [deletedImageUrls, setDeletedImageUrls] = useState([]);
   const [imagePreviews, setImagePreviews] = useState([]);
 
   // 게시글 정보 불러오기
@@ -43,19 +43,26 @@ const BoardUpdate = () => {
 
   // 이미지를 선택할 때마다 이미지를 상태에 추가하고 미리 보기 생성
   const handleImageChange = (event) => {
-    const selectedImages = event.target.files;
-    setNewImages([...newImages, ...selectedImages]);
+    const newImages = event.target.files;
+    setNewImages([...newImages, ...newImages]);
 
     // 새로운 이미지에 대한 미리 보기 생성
     const previews = [];
-    for (let i = 0; i < selectedImages.length; i++) {
-      previews.push(URL.createObjectURL(selectedImages[i]));
+    for (let i = 0; i < newImages.length; i++) {
+      previews.push(URL.createObjectURL(newImages[i]));
     }
     setImagePreviews((prevPreviews) => [...prevPreviews, ...previews]);
   };
 
   // 기존 이미지 클릭하여 삭제
   const handleDeleteImage = (index) => {
+    const deletedImageUrl = board.images[index]; // 삭제될 이미지의 경로
+
+    setDeletedImageUrls((deletedImageUrls) => [
+      ...deletedImageUrls,
+      deletedImageUrl,
+    ]);
+
     const updatedImages = [...board.images];
     updatedImages.splice(index, 1);
     setBoard((prevState) => ({
@@ -90,16 +97,20 @@ const BoardUpdate = () => {
       formData.append("content", board.content);
       formData.append("createdBy", board.createdBy);
 
-      newImages.forEach((image) => {
-        formData.append("images", image); // 새로운 이미지 파일을 FormData에 추가
-      });
+      if (newImages.length != 0) {
+        newImages.forEach((image) => {
+          formData.append("images", image); // 새로운 이미지 파일을 FormData에 추가
+        });
+      } else {
+        formData.append("images", []);
+      }
 
       formData.append("deletedImageUrls", deletedImageUrls); // 삭제된 이미지 파일의 URL을 FormData에 추가
 
       const response = await updateBoard(id, formData); // FormData 객체를 전달하여 게시글 수정
       if (response) {
         alert("수정되었습니다.");
-        navigate(`/board/${id}`);
+        navigate("/boardList/");
       }
     } catch (error) {
       console.error("게시글 수정 오류:", error);
