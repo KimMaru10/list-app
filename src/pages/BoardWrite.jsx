@@ -37,6 +37,20 @@ const BoardWrite = () => {
     setImagePreviews((prevPreviews) => [...prevPreviews, ...previews]);
   };
 
+  // 미리 보기에서 이미지 삭제
+  const handleDeletePreview = (index) => {
+    const updatedPreviews = [...imagePreviews];
+    updatedPreviews.splice(index, 1);
+    setImagePreviews(updatedPreviews);
+
+    const updatedImages = [...board.images];
+    updatedImages.splice(index, 1);
+    setBoard((prevState) => ({
+      ...prevState,
+      images: updatedImages,
+    }));
+  };
+
   //게시글 저장
   const addBoardHandler = async () => {
     try {
@@ -109,12 +123,14 @@ const BoardWrite = () => {
       <div>
         {/* 이미지 미리 보기 */}
         {imagePreviews.map((preview, index) => (
-          <img
-            key={index}
-            src={preview}
-            alt={`image-preview-${index}`}
-            style={{ width: "100px", height: "100px", marginRight: "10px" }}
-          />
+          <div key={index} style={{ display: "inline-block" }}>
+            <img
+              src={preview}
+              alt={`image-preview-${index}`}
+              style={{ width: "100px", height: "100px", marginRight: "10px" }}
+            />
+            <button onClick={() => handleDeletePreview(index)}>삭제</button>
+          </div>
         ))}
       </div>
       <br />

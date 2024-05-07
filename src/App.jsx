@@ -5,6 +5,7 @@ import NotFound from "./pages/NotFound";
 import BoardList from "./pages/BoardList";
 import BoardWrite from "./pages/BoardWrite";
 import BoardDetail from "./pages/BoardDetail";
+import BoardUpdate from "./pages/BoardUpdate";
 function App() {
   return (
     <>
@@ -14,6 +15,7 @@ function App() {
         <Route path="/boardList" element={<BoardList />} />
         <Route path="/write" element={<BoardWrite />} />
         <Route path="/board/:id" element={<BoardDetail />} />
+        <Route path="/update/:id" element={<BoardUpdate />} />
       </Routes>
     </>
   );
